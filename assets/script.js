@@ -18,6 +18,13 @@
 
 
 // Assignment Code
+
+var enter;
+var numbers;
+var upperCase;
+var lowerCase;
+var specialCharacters;
+var options;
 var generateBtn = document.querySelector("#generate");
 
 window.addEventListener("Click", function() {
@@ -27,25 +34,35 @@ window.addEventListener("Click", function() {
 
 
 function generatePassword() {
-    enter = parseInt(prompt("How long would you like the password? Please pick a number between 8 - 128."));
-} 
+  enter = parseInt(prompt("How long would you like the password? Please pick a number between 8 - 128."));
 
-// function UserInput(ps) {
-//     document.getElementById("password").textContent = ps;
+} if (enter < 8 || enter > 128) {
+    alert("The number you selected is outside the paramaters of 8-128, please adjust.");
 
-// }
+} else if ( enter>= 8 && enter <=128) {
+  
+}else {
+   numbers= confirm("Include numbers?");
+   upperCase= confirm("Include uppercase letters?");
+   lowerCase= confirm("Include lowercase letters?");
+   specialCharacters= confirm("Include special characters?");
+};
+
+if(!numbers && !lowerCase && !upperCase && !specialCharacters) {
+ options= alert("At least one option needs to be selected!");
+}
 
   
 
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+   function writePassword(){
+        var password = generatePassword();
+        var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+        passwordText.value = password;
 
-}
+    }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
