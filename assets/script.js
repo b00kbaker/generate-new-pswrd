@@ -27,6 +27,14 @@ var specialCharacters;
 var options;
 var generateBtn = document.querySelector("#generate");
 
+num= ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+upper= ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+lower= ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+character= [' ', '!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~', '"', "'"];
+
+
+
+
 window.addEventListener("Click", function() {
     generateNewPassword();
   });
@@ -38,10 +46,9 @@ function generatePassword() {
 
 } if (enter < 8 || enter > 128) {
     alert("The number you selected is outside the paramaters of 8-128, please adjust.");
-
-} else if ( enter>= 8 && enter <=128) {
   
-}else {
+  
+} else {
    numbers= confirm("Include numbers?");
    upperCase= confirm("Include uppercase letters?");
    lowerCase= confirm("Include lowercase letters?");
