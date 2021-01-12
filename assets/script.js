@@ -20,6 +20,24 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+window.addEventListener("Click", function() {
+    generateNewPassword();
+  });
+
+
+
+function generatePassword() {
+    enter = parseInt(prompt("How long would you like the password? Please pick a number between 8 - 128."));
+} 
+
+// function UserInput(ps) {
+//     document.getElementById("password").textContent = ps;
+
+// }
+
+  
+
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -31,3 +49,6 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
+generatePassword();
