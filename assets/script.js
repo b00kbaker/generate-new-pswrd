@@ -1,4 +1,3 @@
-var passwordLength;
 var numbers;
 var upperCase;
 var lowerCase;
@@ -11,18 +10,14 @@ upper= ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O
 lower= ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 character= [' ', '!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~', '"', "'"]
 
-// num = "0123456789".split("");
-// upper = "ABCDEFGHIJKLMNOPQRSTYVWXYZ".split("");
-// lower = "abcdefghijklmnopqrstuvwxyz".split("");
-// character = "!?#@$%&*".split("");
 
 window.addEventListener("Click", function () {
   generateNewPassword();
 });
 
 function generatePassword() {
-  passwordLength = parseInt(
-    prompt(
+ var passwordLength = parseInt(
+    window.prompt(
       "How long would you like the password? Please pick a number between 8 - 128."
     )
   );
@@ -48,9 +43,7 @@ if (!numbers && !lowerCase && !upperCase && !specialCharacters) {
 
 function writePassword() {
   var password = generatePassword();
-  // var passwordText = document.querySelector("#password");
   var passwordArray = [];
-  // passwordText.value = password;
 
   if (password.numbers) {
     for (i = 0; i < num.passwordLength; ++i) {
@@ -75,15 +68,19 @@ function writePassword() {
   var finishedPassword= [];
 
   for (let i = 0; i < password.passwordLength; ++i) {
-    var randomizer = Math.floor(Math.random() * Math.floor(passwordArray.passwordLength));
+    var randomizer = Math.floor(Math.random() * Math.floor(passwordArray.length));
      finishedPassword.push(passwordArray[randomizer])
 }
-  var viewFinished = finishedPassword.join('');
-
-    document.getElementById("#password").textContent = viewFinished;
+  return finishedPassword.join('');
 }
+
+var passwordText = document.querySelector("#password");
+var password = writePassword();
+
+
+passwordText.value= password;
+
 
 
 generateBtn.addEventListener("click", generatePassword);
 
-// generatePassword();
