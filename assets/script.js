@@ -6,15 +6,15 @@ var specialCharacters;
 var options;
 var generateBtn = document.querySelector("#generate");
 
-// num= ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].split("");
-// upper= ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'].split("");
-// lower= ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'].split("");
-// character= [' ', '!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~', '"', "'"].split("");
+num= ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+upper= ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+lower= ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+character= [' ', '!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~', '"', "'"]
 
-num = "0123456789".split("");
-upper = "ABCDEFGHIJKLMNOPQRSTYVWXYZ".split("");
-lower = "abcdefghijklmnopqrstuvwxyz".split("");
-character = "!?#@$%&*".split("");
+// num = "0123456789".split("");
+// upper = "ABCDEFGHIJKLMNOPQRSTYVWXYZ".split("");
+// lower = "abcdefghijklmnopqrstuvwxyz".split("");
+// character = "!?#@$%&*".split("");
 
 window.addEventListener("Click", function () {
   generateNewPassword();
@@ -31,7 +31,8 @@ if (passwordLength < 8 || passwordLength > 128) {
   alert(
     "The number you selected is outside the paramaters of 8-128, please adjust."
   );
-  // return generatePassword();
+  return generatePassword();
+
 } else {
   numbers = confirm("Include numbers?");
   upperCase = confirm("Include uppercase letters?");
@@ -41,12 +42,13 @@ if (passwordLength < 8 || passwordLength > 128) {
 
 if (!numbers && !lowerCase && !upperCase && !specialCharacters) {
   options = alert("At least one option needs to be selected!");
-  //  return generatePassword();
+
+   return generatePassword();
 }
 
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  // var passwordText = document.querySelector("#password");
   var passwordArray = [];
   // passwordText.value = password;
 
@@ -71,9 +73,17 @@ function writePassword() {
     }
   }
   var finishedPassword= [];
+
+  for (let i = 0; i < password.passwordLength; ++i) {
+    var randomizer = Math.floor(Math.random() * Math.floor(passwordArray.passwordLength));
+     finishedPassword.push(passwordArray[randomizer])
+}
+  var viewFinished = finishedPassword.join('');
+
+    document.getElementById("#password").textContent = viewFinished;
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
-generatePassword();
+generateBtn.addEventListener("click", generatePassword);
+
+// generatePassword();
