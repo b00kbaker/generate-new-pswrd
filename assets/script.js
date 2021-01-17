@@ -1,24 +1,3 @@
-// GIVEN I need a new, secure password
-// WHEN I click the button to generate a password
-// THEN I am presented with a series of prompts for password criteria
-// WHEN prompted for password criteria
-// THEN I select which criteria to include in the password
-// WHEN prompted for the length of the password
-// THEN I choose a length of at least 8 characters and no more than 128 characters
-// WHEN prompted for character types to include in the password
-// THEN I choose lowercase, uppercase, numeric, and/or special characters
-// WHEN I answer each prompt
-// THEN my input should be validated and at least one character type should be selected
-// WHEN all prompts are answered
-// THEN a password is generated that matches the selected criteria
-// WHEN the password is generated
-// THEN the password is either displayed in an alert or written to the page
-
-
-
-
-// Assignment Code
-
 var passwordLength;
 var numbers;
 var upperCase;
@@ -32,55 +11,69 @@ var generateBtn = document.querySelector("#generate");
 // lower= ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'].split("");
 // character= [' ', '!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~', '"', "'"].split("");
 
-num="0123456789".split("");
-upper="ABCDEFGHIJKLMNOPQRSTYVWXYZ".split("");
-lower="abcdefghijklmnopqrstuvwxyz".split("");
-character="!?#@$%&*".split("");
+num = "0123456789".split("");
+upper = "ABCDEFGHIJKLMNOPQRSTYVWXYZ".split("");
+lower = "abcdefghijklmnopqrstuvwxyz".split("");
+character = "!?#@$%&*".split("");
 
-
-
-
-window.addEventListener("Click", function() {
-    generateNewPassword();
-  });
-
-
+window.addEventListener("Click", function () {
+  generateNewPassword();
+});
 
 function generatePassword() {
-  passwordLength = parseInt(prompt("How long would you like the password? Please pick a number between 8 - 128."));
-  console.log(generatePassword);
-
-} if (passwordLength < 8 || passwordLength > 128) {
-    alert("The number you selected is outside the paramaters of 8-128, please adjust.");
-  return generatePassword();
-
-  
+  passwordLength = parseInt(
+    prompt(
+      "How long would you like the password? Please pick a number between 8 - 128."
+    )
+  );
+}
+if (passwordLength < 8 || passwordLength > 128) {
+  alert(
+    "The number you selected is outside the paramaters of 8-128, please adjust."
+  );
+  // return generatePassword();
 } else {
-   numbers= confirm("Include numbers?");
-   upperCase= confirm("Include uppercase letters?");
-   lowerCase= confirm("Include lowercase letters?");
-   specialCharacters= confirm("Include special characters?");
-};
-
-if(!numbers && !lowerCase && !upperCase && !specialCharacters) {
- options= alert("At least one option needs to be selected!");
- return generatePassword();
+  numbers = confirm("Include numbers?");
+  upperCase = confirm("Include uppercase letters?");
+  lowerCase = confirm("Include lowercase letters?");
+  specialCharacters = confirm("Include special characters?");
 }
 
+if (!numbers && !lowerCase && !upperCase && !specialCharacters) {
+  options = alert("At least one option needs to be selected!");
+  //  return generatePassword();
+}
 
-   function writePassword(){
-        var password = generatePassword();
-        var passwordText = document.querySelector("#password");
-        var passwordArray= [];
-        // passwordText.value = password;
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+  var passwordArray = [];
+  // passwordText.value = password;
 
+  if (password.numbers) {
+    for (i = 0; i < num.passwordLength; ++i) {
+      passwordArray.push(num[i]);
     }
+  }
+  if (password.upperCase) {
+    for (i = 0; i < upper.passwordLength; ++i) {
+      passwordArray.push(upper[i]);
+    }
+  }
+  if (password.lowerCase) {
+    for (i = 0; i < lower.passwordLength; ++i) {
+      passwordArray.push(lower[i]);
+    }
+  }
+  if (password.character) {
+    for (i = 0; i < character.passwordLength; ++i) {
+      passwordArray.push(character[i]);
+    }
+  }
+  var finishedPassword= [];
+}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-
 generatePassword();
-
-
-
