@@ -135,9 +135,7 @@ function writePassword() {
   }
 
   var passwordData = document.querySelector("#password");
-  passwordData.value = finishedPassword;
-
-  return finishedPassword.join("");
+  passwordData.value = finishedPassword.join("");
 }
 
 generateBtn.addEventListener("click", writePassword);
